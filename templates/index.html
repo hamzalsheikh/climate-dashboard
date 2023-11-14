@@ -1,22 +1,27 @@
-<!doctype html>
-<html>
+{% extends "base.html" %}
 
-    <style>
-        div.full {
-          width:100%;
-          overflow:auto;
-        }
-        div.dirtree {
-          width:33%;  
-          float:left;
-        }
-        div.image-screen {
-            width: 66%;
-            float: right;
-        }
-    </style>
 
-<body>
+{% block head %}
+
+<style>
+    div.full {
+      width:100%;
+      overflow:auto;
+    }
+    div.dirtree {
+      width:33%;  
+      float:left;
+    }
+    div.image-screen {
+        width: 66%;
+        float: right;
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+
 <div class="full">
     <div class="dirtree">
     <title>Path: {{ tree.name }}</title>
@@ -36,5 +41,5 @@
     </div>
     
 </div>
-</body>
-</html>
+
+{% endblock %}
