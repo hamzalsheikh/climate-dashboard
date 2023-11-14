@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+    <style>
+        div.full {
+          width:100%;
+          overflow:auto;
+        }
+        div.dirtree {
+          width:33%;  
+          float:left;
+        }
+        div.image-screen {
+            width: 66%;
+            float: right;
+        }
+    </style>
+
+<body>
+<div class="full">
+    <div class="dirtree">
+    <title>Path: {{ tree.name }}</title>
+    <h1>{{ tree.name }}</h1>
+    <ul>
+    {%- for item in tree.children recursive %}
+        <li id="click"> <a href="/{{item.name}}">  {{ item.name }}  </a> 
+        {%- if item.children -%}
+            <ul>   {{ loop(item.children) }}   </ul> 
+        {%- endif %}</li>
+    {%- endfor %}
+    </ul>
+    </div>
+
+    <div class="image-screen">
+        <img src=" {{ image }}" alt="this should be an image">
+    </div>
+    
+</div>
+</body>
+</html>
