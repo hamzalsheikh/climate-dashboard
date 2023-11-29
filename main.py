@@ -14,6 +14,7 @@ def make_tree(path):
 
 
 import os
+from time import sleep
 from flask import Flask, render_template, url_for
 
 
@@ -36,5 +37,17 @@ def find(name, path):
         if name in files:
             return os.path.join(root, name)
 
+# Log files streaming
+@app.route('/logs')
+def stream():
+    def generate():
+        with open('test.log') as f:
+            while True:
+                yield f.read()
+                #sleep(1)
+
+    return app.response_class(generate(), mimetype='text/plain')
+
+
 if __name__=="__main__":
-    app.run(host='localhost', port=8888, debug=True)
+    app.run(host='localhost', port=8888, debug=False)
