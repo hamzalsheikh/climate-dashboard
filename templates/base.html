@@ -11,7 +11,37 @@
         {% block head %} {% endblock %} 
     </head>
 
+    <style>
+        ul.nav {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li.nav {
+          float: left;
+        }
+        
+        li.nav a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover {
+          background-color: #111;
+        }
+        </style>
+
 <body>
+    <ul class="nav">
+        <li class="nav"><a href="/index">Results</a></li>
+        <li class="nav"><a href="/logs">Logs</a></li>
+      </ul>
     {% block body %} {% endblock %} 
 </body>
 </html>

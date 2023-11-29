@@ -22,6 +22,7 @@
 
 {% block body %}
 
+
 <div class="full">
     <div class="dirtree">
     <title>Path: {{ tree.name }}</title>
@@ -37,10 +38,22 @@
     </div>
 
     <div class="image-screen">
-        <img src=" {{ image }}" alt="this should be an image">
+        <pre id="output"></pre>
     </div>
     
 </div>
 
+
+<script>
+    var output = document.getElementById('output');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '{{ url_for('stream') }}');
+    xhr.send();
+
+    setInterval(function() {
+       output.textContent = xhr.responseText;
+    }, 1000);
+</script>
 
 {% endblock %}
