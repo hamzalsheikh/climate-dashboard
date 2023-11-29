@@ -29,9 +29,9 @@
     <h1>{{ tree.name }}</h1>
     <ul>
     {%- for item in tree.children recursive %}
-        <li id="click"> <a href="/{{item.name}}">  {{ item.name }}  </a> 
+        <li id="click"> <a id="{{item.name}}" onClick="getFileName(this.id)">  {{ item.name }}  </a> 
         {%- if item.children -%}
-            <ul>   {{ loop(item.children) }}   </ul> 
+            <ul  >   {{ loop(item.children) }}   </ul> 
         {%- endif %}</li>
     {%- endfor %}
     </ul>
@@ -46,11 +46,16 @@
 
 <script>
     var output = document.getElementById('output');
-
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '{{ url_for('stream') }}');
-    xhr.send();
 
+    
+    function getFileName (id) {
+        file = id
+        xhr.open('GET', '/logging-loop/' + file);
+        xhr.send();
+        console.log(id)
+    }
+    
     setInterval(function() {
        output.textContent = xhr.responseText;
     }, 1000);

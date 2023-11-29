@@ -49,10 +49,10 @@ def display_log():
     return render_template('log.html', tree=make_tree(path))
 
 
-@app.route('/logging-loop')
-def stream():
+@app.route('/logging-loop/<logFile>')
+def stream(logFile):
     def generate():
-        with open('test.log') as f:
+        with open("static/logs/" + logFile) as f:
             while True:
                 yield f.read()
                 sleep(1)
