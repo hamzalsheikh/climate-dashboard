@@ -60,4 +60,4 @@ def stream(logFile):
     return app.response_class(generate(), mimetype='text/plain') # render_template('logging.html', logs=generate())
 
 if __name__=="__main__":
-    app.run(host='localhost', port=8888, debug=True) 
+    app.run(host='0.0.0.0', port=8888, debug=True) 
