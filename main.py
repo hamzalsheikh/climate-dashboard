@@ -30,7 +30,7 @@ def make_tree(path):
 @app.route('/<image>')
 def display_image(image):
     path = os.path.expanduser(u'static/images')
-    img = find(image, 'static')
+    img = find(image, 'static/images')
     print(image)
     return render_template('index.html', tree=make_tree(path), image=img)
 
